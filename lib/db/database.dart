@@ -48,7 +48,7 @@ Future<List<Student>> getStudents() async {
 
 // INSERT
 
-Future<Student> insertStudents(Student student) async {
+Future<Student> insertStudent(Student student) async {
   Database db = await this.database;
   student.id = await db.insert(studentsTable, student.toMap());
   return student;
@@ -63,7 +63,7 @@ Future<int> updateStudent(Student student) async {
 
 // DELETE
 
-Future<int> deleteStudent(int id) async {
+Future<int> deleteStudent(int? id) async {
     Database db = await this.database;
     return await db.delete(studentsTable, where: "$columnId", whereArgs: [id],);
 }
